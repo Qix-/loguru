@@ -88,7 +88,9 @@
 #if LOGURU_STACKTRACES
 	#include <cxxabi.h>    // for __cxa_demangle
 	#include <dlfcn.h>     // for dladdr
-	#include <execinfo.h>  // for backtrace
+	#if !defined(__GLIBC__)
+		#include <execinfo.h>  // for backtrace
+	#endif
 #endif // LOGURU_STACKTRACES
 
 #if LOGURU_PTHREADS
